@@ -56,11 +56,13 @@ namespace BX22
                 //this.Invoke(new EventHandler(displayData_event));
                 Control.CheckForIllegalCrossThreadCalls = false;
                 data_listbox.Items.Add(deger);
+                ParseIslemi(deger);
                 
             }
             catch (System.IO.IOException)
             {
-                MessageBox.Show("Geçersiz i/o");
+                //MessageBox.Show("Geçersiz i/o");
+               
             }
             catch (InvalidOperationException)
             {
@@ -92,27 +94,13 @@ namespace BX22
            
         }
 
-       
-     
-
-        private void btn_open_Click(object sender, EventArgs e)
+        public void ParseIslemi(string yenideger)
         {
-           
-            if (cbx_name.Text!=" " && cbx_boud.Text!=" ")
-            {
-                OpenConnection(cbx_name.Text, Convert.ToInt32(cbx_boud.Text)); //kulanilacak port
-                //serialPort.PortName = cbx_name.SelectedItem.ToString();
-                backgroundWorker1.RunWorkerAsync();
                
-
-            }
-           
-            else
-            {
-                MessageBox.Show("Gerekli alanları doldurunuz");
-            }
-
         }
+
+
+
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -120,5 +108,35 @@ namespace BX22
 
             ComPortList();
         }
+
+        private void btn_open_Click(object sender, EventArgs e)
+        {
+            if (cbx_name.Text != " " && cbx_boud.Text != " ")
+            {
+                OpenConnection(cbx_name.Text, Convert.ToInt32(cbx_boud.Text)); //kulanilacak port
+                //serialPort.PortName = cbx_name.SelectedItem.ToString();
+                backgroundWorker1.RunWorkerAsync();
+
+
+            }
+
+            else
+            {
+                MessageBox.Show("Gerekli alanları doldurunuz");
+            }
+            btn_open.Visible = false;
+            
+
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            serialPort.Close();
+            btn_open.Visible = true;
+            btn_close.Visible = false;
+        }
+
+      
     }
+ 
 }
