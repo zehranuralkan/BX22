@@ -1,0 +1,10 @@
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\bin\Debug\BX22.exe.config
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\bin\Debug\BX22.exe
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\bin\Debug\BX22.pdb
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.csprojAssemblyReference.cache
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.Properties.Resources.resources
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.csproj.GenerateResource.cache
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.csproj.CoreCompileInputs.cache
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.exe
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.pdb
+C:\Users\yazilim.kullanici\source\repos\BX22\BX22\obj\Debug\BX22.Serial.resources
