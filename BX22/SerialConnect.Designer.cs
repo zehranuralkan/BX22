@@ -89,7 +89,7 @@
             this.lbl_netparse.AutoSize = true;
             this.lbl_netparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_netparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_netparse.Location = new System.Drawing.Point(95, 315);
+            this.lbl_netparse.Location = new System.Drawing.Point(95, 313);
             this.lbl_netparse.Name = "lbl_netparse";
             this.lbl_netparse.Size = new System.Drawing.Size(0, 15);
             this.lbl_netparse.TabIndex = 13;
@@ -99,7 +99,7 @@
             this.lbl_tareparse.AutoSize = true;
             this.lbl_tareparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_tareparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_tareparse.Location = new System.Drawing.Point(107, 289);
+            this.lbl_tareparse.Location = new System.Drawing.Point(107, 287);
             this.lbl_tareparse.Name = "lbl_tareparse";
             this.lbl_tareparse.Size = new System.Drawing.Size(0, 15);
             this.lbl_tareparse.TabIndex = 12;
