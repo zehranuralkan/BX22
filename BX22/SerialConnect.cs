@@ -19,11 +19,11 @@ namespace BX22
         }
 
         public static SerialPort serialPort = new SerialPort();//serial port tanitimi
-        public static string[] ports = SerialPort.GetPortNames();
+        public static string[] ports = SerialPort.GetPortNames();//seri baglanti noktasi adları dizisi
 
         public void OpenConnection(string portName, int boudrate) {
             if (serialPort.IsOpen)
-                serialPort.Close();
+                serialPort.Close();//serial port acik ise kapatir
             if (!serialPort.IsOpen)
             {
                 try
@@ -31,7 +31,7 @@ namespace BX22
                     serialPort.PortName = portName;
                     serialPort.BaudRate = boudrate;
                     serialPort.Open();
-                    serialPort.Handshake = Handshake.None; //baglanti noktasi iletisiimde denetim
+                    serialPort.Handshake = Handshake.None; //baglanti noktasi iletisiminde denetim
                     data_listbox.Items.Add("Serial port" + " " + cbx_name.Text +" "+ "is open");
                 }
                 catch
@@ -47,9 +47,9 @@ namespace BX22
         {
             try
             {
-                deger = serialPort.ReadLine();
+                deger = serialPort.ReadLine();//serial okuma 
                 Control.CheckForIllegalCrossThreadCalls = false;
-                data_listbox.Items.Add(deger);
+                data_listbox.Items.Add(deger); //okunan degerler listbox gosterilir
                 ParseIslemi(deger);
             }
             catch (System.IO.IOException)
@@ -74,6 +74,7 @@ namespace BX22
         }
         public void ComPortList()
         {
+            //mevcut comportlri combobox'da listeleyen metod
             string[] ports = SerialPort.GetPortNames();
             foreach (string port in ports)
             {
@@ -83,6 +84,7 @@ namespace BX22
        
         public void ParseIslemi(string yenideger)
         {
+           
             yenideger = yenideger + "   ";
             lbl_fisnumarasiparse.Text = yenideger.Substring(6, 4);
             lbl_grossparse.Text = yenideger.Substring(17, 9);
@@ -102,7 +104,7 @@ namespace BX22
             if (cbx_name.Text != " " && cbx_boud.Text != " ")
             {
                 OpenConnection(cbx_name.Text, Convert.ToInt32(cbx_boud.Text)); //kulanilacak port                                               
-                backgroundWorker1.RunWorkerAsync();
+              
             }
             else
             {
@@ -124,7 +126,6 @@ namespace BX22
                 }
             }
    
-
         private void btn_close_Click(object sender, EventArgs e)
         {
             serialPort.Close();
