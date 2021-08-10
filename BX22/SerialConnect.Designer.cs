@@ -30,6 +30,9 @@
         {
             this.data_listbox = new System.Windows.Forms.ListBox();
             this.panel_serial = new System.Windows.Forms.Panel();
+            this.lbl_tareparse = new System.Windows.Forms.Label();
+            this.lbl_grossparse = new System.Windows.Forms.Label();
+            this.lbl_fisnumarasiparse = new System.Windows.Forms.Label();
             this.lbl_net = new System.Windows.Forms.Label();
             this.lbl_tare = new System.Windows.Forms.Label();
             this.lbl_gross = new System.Windows.Forms.Label();
@@ -41,7 +44,7 @@
             this.cbx_name = new System.Windows.Forms.ComboBox();
             this.lbl_name = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lbl_fisnumarasiparse = new System.Windows.Forms.Label();
+            this.lbl_netparse = new System.Windows.Forms.Label();
             this.panel_serial.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +59,9 @@
             // panel_serial
             // 
             this.panel_serial.BackColor = System.Drawing.SystemColors.Control;
+            this.panel_serial.Controls.Add(this.lbl_netparse);
+            this.panel_serial.Controls.Add(this.lbl_tareparse);
+            this.panel_serial.Controls.Add(this.lbl_grossparse);
             this.panel_serial.Controls.Add(this.lbl_fisnumarasiparse);
             this.panel_serial.Controls.Add(this.lbl_net);
             this.panel_serial.Controls.Add(this.lbl_tare);
@@ -72,6 +78,34 @@
             this.panel_serial.Name = "panel_serial";
             this.panel_serial.Size = new System.Drawing.Size(207, 341);
             this.panel_serial.TabIndex = 1;
+            // 
+            // lbl_tareparse
+            // 
+            this.lbl_tareparse.AutoSize = true;
+            this.lbl_tareparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_tareparse.Location = new System.Drawing.Point(107, 289);
+            this.lbl_tareparse.Name = "lbl_tareparse";
+            this.lbl_tareparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_tareparse.TabIndex = 12;
+            // 
+            // lbl_grossparse
+            // 
+            this.lbl_grossparse.AutoSize = true;
+            this.lbl_grossparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_grossparse.Location = new System.Drawing.Point(107, 263);
+            this.lbl_grossparse.Name = "lbl_grossparse";
+            this.lbl_grossparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_grossparse.TabIndex = 11;
+            // 
+            // lbl_fisnumarasiparse
+            // 
+            this.lbl_fisnumarasiparse.AutoSize = true;
+            this.lbl_fisnumarasiparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_fisnumarasiparse.Location = new System.Drawing.Point(123, 236);
+            this.lbl_fisnumarasiparse.Name = "lbl_fisnumarasiparse";
+            this.lbl_fisnumarasiparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fisnumarasiparse.TabIndex = 10;
+            this.lbl_fisnumarasiparse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lbl_net
             // 
@@ -173,14 +207,14 @@
             this.lbl_name.TabIndex = 0;
             this.lbl_name.Text = "Name";
             // 
-            // lbl_fisnumarasiparse
+            // lbl_netparse
             // 
-            this.lbl_fisnumarasiparse.AutoSize = true;
-            this.lbl_fisnumarasiparse.Location = new System.Drawing.Point(117, 239);
-            this.lbl_fisnumarasiparse.Name = "lbl_fisnumarasiparse";
-            this.lbl_fisnumarasiparse.Size = new System.Drawing.Size(0, 13);
-            this.lbl_fisnumarasiparse.TabIndex = 10;
-            this.lbl_fisnumarasiparse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lbl_netparse.AutoSize = true;
+            this.lbl_netparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_netparse.Location = new System.Drawing.Point(107, 315);
+            this.lbl_netparse.Name = "lbl_netparse";
+            this.lbl_netparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_netparse.TabIndex = 13;
             // 
             // Serial
             // 
@@ -214,6 +248,9 @@
         private System.Windows.Forms.Label lbl_gross;
         private System.Windows.Forms.Label lbl_fisnumarasi;
         private System.Windows.Forms.Label lbl_fisnumarasiparse;
+        private System.Windows.Forms.Label lbl_grossparse;
+        private System.Windows.Forms.Label lbl_tareparse;
+        private System.Windows.Forms.Label lbl_netparse;
     }
 }
 

@@ -96,7 +96,13 @@ namespace BX22
 
         public void ParseIslemi(string yenideger)
         {
-               
+            int ayir = yenideger.IndexOf(' ');
+         
+            lbl_fisnumarasiparse.Text = yenideger.Substring(6, ayir);
+            lbl_grossparse.Text = yenideger.Substring(17, 8);
+            lbl_tareparse.Text = yenideger.Substring(33,8);
+            lbl_netparse.Text = yenideger.Substring(49, 8);
+
         }
 
 
@@ -125,7 +131,7 @@ namespace BX22
                 MessageBox.Show("Gerekli alanları doldurunuz");
             }
             btn_open.Visible = false;
-            
+            btn_close.Visible = true;
 
         }
 
@@ -134,9 +140,13 @@ namespace BX22
             serialPort.Close();
             btn_open.Visible = true;
             btn_close.Visible = false;
+            lbl_fisnumarasiparse.Text = " ";
+            lbl_grossparse.Text = " ";
+            lbl_tareparse.Text = " ";
+            lbl_netparse.Text = " ";
         }
 
-      
+    
     }
  
 }
