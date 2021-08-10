@@ -33,7 +33,9 @@ namespace BX22
                     serialPort.Open();
                     serialPort.Handshake = Handshake.None; //baglanti noktasi iletisiimde denetim
                     data_listbox.Items.Add("Serial port" + " " + cbx_name.Text +" "+ "is open");
-                    data_listbox.Items.Add(deger);
+                    //data_listbox.Items.Add(deger);
+                   
+
                 }
                 catch
                 {
@@ -53,16 +55,19 @@ namespace BX22
             try
             {
                 deger = serialPort.ReadLine();
-                //this.Invoke(new EventHandler(displayData_event));
+             
                 Control.CheckForIllegalCrossThreadCalls = false;
+             
                 data_listbox.Items.Add(deger);
+            
                 ParseIslemi(deger);
-                
+               
+
             }
             catch (System.IO.IOException)
             {
-                //MessageBox.Show("Geçersiz i/o");
-               
+             
+
             }
             catch (InvalidOperationException)
             {
@@ -93,19 +98,18 @@ namespace BX22
             }
            
         }
-
+        int sayac = 0;
         public void ParseIslemi(string yenideger)
         {
-            int ayir = yenideger.IndexOf(' ');
-         
-            lbl_fisnumarasiparse.Text = yenideger.Substring(6, ayir);
-            lbl_grossparse.Text = yenideger.Substring(17, 8);
-            lbl_tareparse.Text = yenideger.Substring(33,8);
-            lbl_netparse.Text = yenideger.Substring(49, 8);
-
-        }
-
-
+          
+            yenideger = yenideger + "   ";
+           
+            lbl_fisnumarasiparse.Text = yenideger.Substring(6, 4);
+            lbl_grossparse.Text = yenideger.Substring(17, 9);
+            lbl_tareparse.Text = yenideger.Substring(33, 9);
+            lbl_netparse.Text = yenideger.Substring(47, 10+1);
+      
+            }
 
 
         private void Form1_Load(object sender, EventArgs e)
@@ -114,39 +118,64 @@ namespace BX22
 
             ComPortList();
         }
-
+        
         private void btn_open_Click(object sender, EventArgs e)
         {
             if (cbx_name.Text != " " && cbx_boud.Text != " ")
             {
                 OpenConnection(cbx_name.Text, Convert.ToInt32(cbx_boud.Text)); //kulanilacak port
-                //serialPort.PortName = cbx_name.SelectedItem.ToString();
+                                                                               //serialPort.PortName = cbx_name.SelectedItem.ToString();
                 backgroundWorker1.RunWorkerAsync();
 
 
             }
-
             else
             {
                 MessageBox.Show("Gerekli alanları doldurunuz");
             }
+
+           
             btn_open.Visible = false;
             btn_close.Visible = true;
 
+           
         }
+        
+        private void btn_send_Click(object sender, EventArgs e)
+        {
+     
+   
+        
+
+                if (tbx_send.Text == "P")
+                {
+                    serialPort.Write("P");
+                    
+
+                }
+                else
+                {
+                    data_listbox.Items.Add(tbx_send.Text);
+                }
+               
+            }
+            
+       
 
         private void btn_close_Click(object sender, EventArgs e)
         {
             serialPort.Close();
+            data_listbox.Items.Add("Serial port" + " " + cbx_name.Text + " is closed");
+
             btn_open.Visible = true;
             btn_close.Visible = false;
             lbl_fisnumarasiparse.Text = " ";
             lbl_grossparse.Text = " ";
             lbl_tareparse.Text = " ";
             lbl_netparse.Text = " ";
+
         }
 
-    
     }
  
 }

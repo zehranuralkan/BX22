@@ -30,6 +30,7 @@
         {
             this.data_listbox = new System.Windows.Forms.ListBox();
             this.panel_serial = new System.Windows.Forms.Panel();
+            this.lbl_netparse = new System.Windows.Forms.Label();
             this.lbl_tareparse = new System.Windows.Forms.Label();
             this.lbl_grossparse = new System.Windows.Forms.Label();
             this.lbl_fisnumarasiparse = new System.Windows.Forms.Label();
@@ -43,9 +44,13 @@
             this.lbl_baud = new System.Windows.Forms.Label();
             this.cbx_name = new System.Windows.Forms.ComboBox();
             this.lbl_name = new System.Windows.Forms.Label();
+            this.panel_send = new System.Windows.Forms.Panel();
+            this.btn_send = new System.Windows.Forms.Button();
+            this.tbx_send = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.lbl_netparse = new System.Windows.Forms.Label();
             this.panel_serial.SuspendLayout();
+            this.panel_send.SuspendLayout();
             this.SuspendLayout();
             // 
             // data_listbox
@@ -79,31 +84,44 @@
             this.panel_serial.Size = new System.Drawing.Size(207, 341);
             this.panel_serial.TabIndex = 1;
             // 
+            // lbl_netparse
+            // 
+            this.lbl_netparse.AutoSize = true;
+            this.lbl_netparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_netparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lbl_netparse.Location = new System.Drawing.Point(95, 315);
+            this.lbl_netparse.Name = "lbl_netparse";
+            this.lbl_netparse.Size = new System.Drawing.Size(0, 15);
+            this.lbl_netparse.TabIndex = 13;
+            // 
             // lbl_tareparse
             // 
             this.lbl_tareparse.AutoSize = true;
+            this.lbl_tareparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_tareparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_tareparse.Location = new System.Drawing.Point(107, 289);
             this.lbl_tareparse.Name = "lbl_tareparse";
-            this.lbl_tareparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_tareparse.Size = new System.Drawing.Size(0, 15);
             this.lbl_tareparse.TabIndex = 12;
             // 
             // lbl_grossparse
             // 
             this.lbl_grossparse.AutoSize = true;
+            this.lbl_grossparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_grossparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_grossparse.Location = new System.Drawing.Point(107, 263);
             this.lbl_grossparse.Name = "lbl_grossparse";
-            this.lbl_grossparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_grossparse.Size = new System.Drawing.Size(0, 15);
             this.lbl_grossparse.TabIndex = 11;
             // 
             // lbl_fisnumarasiparse
             // 
             this.lbl_fisnumarasiparse.AutoSize = true;
+            this.lbl_fisnumarasiparse.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
             this.lbl_fisnumarasiparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbl_fisnumarasiparse.Location = new System.Drawing.Point(123, 236);
             this.lbl_fisnumarasiparse.Name = "lbl_fisnumarasiparse";
-            this.lbl_fisnumarasiparse.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fisnumarasiparse.Size = new System.Drawing.Size(0, 15);
             this.lbl_fisnumarasiparse.TabIndex = 10;
             this.lbl_fisnumarasiparse.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -207,20 +225,47 @@
             this.lbl_name.TabIndex = 0;
             this.lbl_name.Text = "Name";
             // 
-            // lbl_netparse
+            // panel_send
             // 
-            this.lbl_netparse.AutoSize = true;
-            this.lbl_netparse.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.lbl_netparse.Location = new System.Drawing.Point(107, 315);
-            this.lbl_netparse.Name = "lbl_netparse";
-            this.lbl_netparse.Size = new System.Drawing.Size(0, 13);
-            this.lbl_netparse.TabIndex = 13;
+            this.panel_send.Controls.Add(this.btn_send);
+            this.panel_send.Controls.Add(this.tbx_send);
+            this.panel_send.Location = new System.Drawing.Point(17, 378);
+            this.panel_send.Name = "panel_send";
+            this.panel_send.Size = new System.Drawing.Size(526, 60);
+            this.panel_send.TabIndex = 2;
+            // 
+            // btn_send
+            // 
+            this.btn_send.Location = new System.Drawing.Point(440, 12);
+            this.btn_send.Name = "btn_send";
+            this.btn_send.Size = new System.Drawing.Size(70, 20);
+            this.btn_send.TabIndex = 1;
+            this.btn_send.Text = "SEND";
+            this.btn_send.UseVisualStyleBackColor = true;
+            this.btn_send.Click += new System.EventHandler(this.btn_send_Click);
+            // 
+            // tbx_send
+            // 
+            this.tbx_send.Location = new System.Drawing.Point(3, 12);
+            this.tbx_send.Name = "tbx_send";
+            this.tbx_send.Size = new System.Drawing.Size(407, 20);
+            this.tbx_send.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(595, 378);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(0, 13);
+            this.label1.TabIndex = 14;
             // 
             // Serial
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel_send);
             this.Controls.Add(this.panel_serial);
             this.Controls.Add(this.data_listbox);
             this.Name = "Serial";
@@ -228,7 +273,10 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_serial.ResumeLayout(false);
             this.panel_serial.PerformLayout();
+            this.panel_send.ResumeLayout(false);
+            this.panel_send.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -241,7 +289,6 @@
         private System.Windows.Forms.ComboBox cbx_boud;
         private System.Windows.Forms.Label lbl_baud;
         private System.Windows.Forms.ComboBox cbx_name;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Label lbl_net;
         private System.Windows.Forms.Label lbl_tare;
@@ -251,6 +298,11 @@
         private System.Windows.Forms.Label lbl_grossparse;
         private System.Windows.Forms.Label lbl_tareparse;
         private System.Windows.Forms.Label lbl_netparse;
+        private System.Windows.Forms.Panel panel_send;
+        private System.Windows.Forms.Button btn_send;
+        private System.Windows.Forms.TextBox tbx_send;
+        private System.Windows.Forms.Label label1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }
 
