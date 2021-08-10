@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,7 +21,6 @@ namespace BX22
 
         public static SerialPort serialPort = new SerialPort();//serial port tanitimi
         public static string[] ports = SerialPort.GetPortNames();//seri baglanti noktasi adları dizisi
-
         public void OpenConnection(string portName, int boudrate) {
             if (serialPort.IsOpen)
                 serialPort.Close();//serial port acik ise kapatir
@@ -40,65 +40,66 @@ namespace BX22
                     data_listbox.Items.Add("Serial port" + " " + cbx_name.Text + " opening error");
                 }
             }
-
         }
-        public string deger = "";
+        public string value = "";
         private void SerialPort_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             try
             {
-                deger = serialPort.ReadLine();//serial okuma 
+                value = serialPort.ReadLine();//serial okuma 
                 Control.CheckForIllegalCrossThreadCalls = false;
-                data_listbox.Items.Add(deger); //okunan degerler listbox gosterilir
-                ParseIslemi(deger);
+                data_listbox.Items.Add(value); //okunan degerler listbox gosterilir
+                ParseProcess(value);
             }
-            catch (System.IO.IOException)
-            {
 
-            }
             catch (InvalidOperationException)
             {
-                deger = "";
+                value = "";
             }
-          
+
             catch (FormatException)
             {
-                MessageBox.Show("Geçersiz format");
+                MessageBox.Show("Format exception");
             }
-         
+
             catch (IndexOutOfRangeException)
             {
-                MessageBox.Show("Geçersiz dizin");
+                MessageBox.Show("Index Expection");
 
             }
+            catch (SocketException)
+            {
+                MessageBox.Show("Socket Exception ");
+            }
+            catch (System.IO.IOException)
+            { }
+
         }
         public void ComPortList()
         {
-            //mevcut comportlri combobox'da listeleyen metod
+            //mevcut comportlari combobox'da listeleyen metod
             string[] ports = SerialPort.GetPortNames();
             foreach (string port in ports)
             {
                 cbx_name.Items.Add(port);
             }
         }
-       
-        public void ParseIslemi(string yenideger)
+        public void ParseProcess(string newvalue)
         {
            
-            yenideger = yenideger + "   ";
-            lbl_fisnumarasiparse.Text = yenideger.Substring(6, 4);
-            lbl_grossparse.Text = yenideger.Substring(17, 9);
-            lbl_tareparse.Text = yenideger.Substring(33, 9);
-            lbl_netparse.Text = yenideger.Substring(47, 10+1);
-            }
-
-
+            newvalue = newvalue + "   ";
+            lbl_receiptnumberparse.Text = newvalue.Substring(6, 4);
+            lbl_grossparse.Text = newvalue.Substring(17, 9);
+            lbl_tareparse.Text = newvalue.Substring(33, 9);
+            lbl_netparse.Text = newvalue.Substring(47, 10+1);
+        }
         private void Form1_Load(object sender, EventArgs e)
         {
             serialPort.DataReceived += new SerialDataReceivedEventHandler(SerialPort_DataReceived); //verileri alır
             ComPortList();
+            btn_close.Visible = false;
+            btn_print.Visible = false;
         }
-        
         private void btn_open_Click(object sender, EventArgs e)
         {
             if (cbx_name.Text != " " && cbx_boud.Text != " ")
@@ -108,37 +109,29 @@ namespace BX22
             }
             else
             {
-                MessageBox.Show("Gerekli alanları doldurunuz");
+                MessageBox.Show("Fill in the required fields");
             }
             btn_open.Visible = false;
             btn_close.Visible = true;
+            btn_print.Visible = true;
         }
-        
-        private void btn_send_Click(object sender, EventArgs e)
-        {
-                if (tbx_send.Text == "P")
-                {
-                    serialPort.Write("P");
-                }
-                else
-                {
-                    data_listbox.Items.Add(tbx_send.Text);
-                }
-            }
-   
+       
         private void btn_close_Click(object sender, EventArgs e)
         {
             serialPort.Close();
             data_listbox.Items.Add("Serial port" + " " + cbx_name.Text + " is closed");
             btn_open.Visible = true;
             btn_close.Visible = false;
-            lbl_fisnumarasiparse.Text = " ";
+            lbl_receiptnumberparse.Text = " ";
             lbl_grossparse.Text = " ";
             lbl_tareparse.Text = " ";
             lbl_netparse.Text = " ";
-
+            btn_print.Visible = false;
         }
 
+        private void btn_print_Click(object sender, EventArgs e)
+        {
+            serialPort.Write("P");
+        }
     }
- 
 }
